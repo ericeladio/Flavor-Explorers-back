@@ -14,4 +14,8 @@ class Categories(SQLModel, table=True):
     categoryID: Optional[int] = Field(default=None, primary_key=True )
     categoryName: str
     description: str
+    
+class Shippers(SQLModel, table=True):
+    shipperID: Optional[int] = Field(default=None, primary_key=True )
+    companyName: str
  

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request
-from querys.querys_products import (
+from queries.queries_products import (
   get_pagination_products, 
   get_all_products_by_categoryID_pagination, 
   get_product,
