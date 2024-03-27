@@ -5,7 +5,7 @@ class Products(SQLModel, table=True):
     productID: Optional[int] = Field(default=None, primary_key=True)
     productName: str
     quantityPerUnit: str
-    quantityPerUnit: float
+    unitPrice: float
     discontinued: int
     categoryID : int
     img : str
