@@ -1,0 +1,12 @@
+version : "3"
+
+services:
+  fastapi:
+    image: flavor-explorers-back
+    build: .
+    container_name: flavor-explorers-back
+    ports:
+      - 8000:8000
+    volumes: 
+      - .:/app
+  
