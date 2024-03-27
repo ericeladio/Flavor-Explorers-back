@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from starlette.responses import RedirectResponse
 from routes.products import product
+from routes.categories import categories
 
 app = FastAPI()
 
@@ -12,5 +13,6 @@ def welcome():
     }
     
 app.include_router(product)   
+app.include_router(categories)   
  
  

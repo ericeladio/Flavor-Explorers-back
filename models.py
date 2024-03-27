@@ -9,3 +9,9 @@ class Products(SQLModel, table=True):
     discontinued: int
     categoryID : int
     img : str
+    
+class Categories(SQLModel, table=True):
+    categoryID: Optional[int] = Field(default=None, primary_key=True )
+    categoryName: str
+    description: str
+ 
