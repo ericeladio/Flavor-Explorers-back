@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from querys import (
+from querys.querys_categories import (
   get_all_categories, 
   create_category, 
   delete_category,
