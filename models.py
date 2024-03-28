@@ -29,12 +29,12 @@ class Customers(SQLModel, table=True):
 
 class Employees(SQLModel, table=True):
     employeeID: Optional[int] = Field(default=None, primary_key=True )
-    lastName: str
+    employeeName: str
     title: str
     city: str
     country: str
     reportsTo: int
-
+  
 class Orders(SQLModel, table=True):
     orderID: Optional[int] = Field(default=None, primary_key=True )
     customerID: str
