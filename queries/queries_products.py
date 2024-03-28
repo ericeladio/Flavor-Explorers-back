@@ -87,7 +87,7 @@ async def get_pagination_products (request: Request, skip: int , limit: int ):
   products = await get_all_products(skip, limit) 
 
   return {
-    'coutn': count,
+    'count': count,
     'next:':  f'{request.base_url}api/products?skip={skip + limit}&limit={limit}' if (skip + limit) < count else None,
     'previous': f'{request.base_url}api/products?skip={skip - limit}&limit={limit}' if skip > 0 else None,
     'products': products
