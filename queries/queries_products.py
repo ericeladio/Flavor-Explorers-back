@@ -64,7 +64,7 @@ async def update_product_query(productID: int, productName: str, quantityPerUnit
         session.refresh(product)
         return product
 
-async def delete_product_query(productID: int):
+async def delete_product_by_id(productID: int):
     with Session(engine) as session:
         product = session.get(Products, productID)
         if not product:
@@ -93,7 +93,7 @@ async def get_pagination_products (request: Request, skip: int , limit: int ):
     'products': products
   }
   
-async def get_product(productID: int):
+async def get_one_product(productID: int):
     with Session(engine) as session:
         statement = select(Products, Categories.categoryName).join(Categories, Categories.categoryID == Products.categoryID).where(Products.productID == productID)
         results = session.exec(statement).one()

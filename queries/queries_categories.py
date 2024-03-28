@@ -26,7 +26,7 @@ async def get_one_category(categoryID: int):
             raise HTTPException(status_code=404, detail="Category not found")
         return category
     
-async def delete_category(categoryID: int):
+async def delete_category_by_id(categoryID: int):
     with Session(engine) as session:
         statement = select(Categories).where(Categories.categoryID == categoryID)
         category = session.exec(statement).first()
@@ -36,7 +36,7 @@ async def delete_category(categoryID: int):
         session.commit()
         return category
 
-async def create_category(categoryName: str, description: str):
+async def create_category_query(categoryName: str, description: str):
     count = await count_all_categories() 
     with Session(engine) as session:
         category = Categories(categoryID=count  + 1, categoryName=categoryName, description=description)
@@ -45,7 +45,7 @@ async def create_category(categoryName: str, description: str):
         session.refresh(category)
         return category
     
-async def update_category(categoryID: int, categoryName: str, description: str):
+async def update_category_query(categoryID: int, categoryName: str, description: str):
     with Session(engine) as session:
         statement = select(Categories).where(Categories.categoryID == categoryID)
         category = session.exec(statement).first()
