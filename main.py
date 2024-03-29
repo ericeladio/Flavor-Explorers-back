@@ -17,5 +17,6 @@ app.include_router(shippers)
 app.include_router(customers)
 app.include_router(employees)
 app.include_router(orders)
+app.include_router(order_details)
  
  

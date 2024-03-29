@@ -45,8 +45,9 @@ class Orders(SQLModel, table=True):
     shipperID: int
     freight: float
     
-class OrderDetails(SQLModel, table=True):
-    orderID: Optional[int] = Field(default=None, primary_key=True )
+class Order_Details(SQLModel, table=True):
+    orderDetailsID: Optional[int] = Field(default=None, primary_key=True)
+    orderID: int
     productID: int
     unitPrice: float
     quantity: int

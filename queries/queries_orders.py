@@ -14,7 +14,7 @@ async def count_all_orders():
 
 async def get_all_orders( limit: int, skip: int):
     with Session(engine) as session:
-        statement = select(Orders, Customers.companyName, Employees.employeeName, Shippers.companyName).join(Customers, Customers.customerID == Orders.customerID).join(Employees, Employees.employeeID == Orders.employeeID).join(Shippers, Shippers.shipperID == Orders.shipperID).limit(limit)
+        statement = select(Orders, Customers.companyName, Employees.employeeName, Shippers.companyName).join(Customers, Customers.customerID == Orders.customerID).join(Employees, Employees.employeeID == Orders.employeeID).join(Shippers, Shippers.shipperID == Orders.shipperID).limit(limit).offset(skip)
         results  = session.exec(statement).all()
         orders = [{
             **result[0].model_dump(),
