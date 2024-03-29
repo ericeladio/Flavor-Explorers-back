@@ -1,10 +1,10 @@
 from fastapi import APIRouter
-from querys.querys_categories import (
+from queries.queries_categories import (
   get_all_categories, 
-  create_category, 
-  delete_category,
+  create_category_query, 
+  delete_category_by_id,
   get_one_category,
-  update_category
+  update_category_query
                
 )
 
@@ -17,7 +17,7 @@ async def get_categories( ):
 
 @categories.post('/api/category')
 async def create_category( categoryName: str, description: str):
-  category = await create_category(categoryName, description)
+  category = await create_category_query(categoryName, description)
   return category
 
 @categories.get('/api/category')
@@ -27,10 +27,10 @@ async def get_category( categoryID: int):
     
 @categories.put('/api/category')
 async def update_category( categoryID: int, categoryName: str, description: str):
-  category = await update_category(categoryID, categoryName, description)
+  category = await update_category_query(categoryID, categoryName, description)
   return category
 
 @categories.delete('/api/category')
 async def delete_category( categoryID: int):
-  category = await delete_category(categoryID)
+  category = await delete_category_by_id(categoryID)
   return category

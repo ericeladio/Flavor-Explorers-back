@@ -64,7 +64,7 @@ async def update_product_query(productID: int, productName: str, quantityPerUnit
         session.refresh(product)
         return product
 
-async def delete_product_query(productID: int):
+async def delete_product_by_id(productID: int):
     with Session(engine) as session:
         product = session.get(Products, productID)
         if not product:
@@ -87,13 +87,13 @@ async def get_pagination_products (request: Request, skip: int , limit: int ):
   products = await get_all_products(skip, limit) 
 
   return {
-    'coutn': count,
+    'count': count,
     'next:':  f'{request.base_url}api/products?skip={skip + limit}&limit={limit}' if (skip + limit) < count else None,
     'previous': f'{request.base_url}api/products?skip={skip - limit}&limit={limit}' if skip > 0 else None,
     'products': products
   }
   
-async def get_product(productID: int):
+async def get_one_product(productID: int):
     with Session(engine) as session:
         statement = select(Products, Categories.categoryName).join(Categories, Categories.categoryID == Products.categoryID).where(Products.productID == productID)
         results = session.exec(statement).one()
